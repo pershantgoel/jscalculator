@@ -3,6 +3,8 @@ var nmbrArray=[];
 var firstno=0;
 var secondno;
 var opr;
+var decimal;
+var decimalOccur=false;
 var output=0;
 window.addEventListener("load",inputno);
 var calcObj = new calculator();
@@ -21,6 +23,7 @@ function inputno(){
         document.querySelector("#clear").addEventListener("click",clearAll);
         document.querySelector("#reciprocal").addEventListener("click",reciprocal);
         document.querySelector("#percentage").addEventListener("click",percentage);
+        document.querySelector("#decimal").addEventListener("click",decimal);
         
 
 }
@@ -71,6 +74,7 @@ function clearAll(){
     opr="";
     nmbrArray=[];
     output=0;
+    decimalOccur=false;
 }
 
 function reciprocal(){
@@ -85,5 +89,17 @@ function percentage(){
         firstno +=nmbrArray[i];
     }
     document.querySelector("#inputbox").value=firstno/100;
+}
+
+function decimal(){
+    if(decimalOccur==false){
+    decimal=this.innerHTML;
+    nmbrArray.push(decimal);
+    document.querySelector("#inputbox").value +=decimal;
+    decimalOccur=true;
+    }
+    else{
+        alert("not allowed");
+    }
 }
 
